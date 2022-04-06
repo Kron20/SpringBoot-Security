@@ -15,12 +15,12 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "username")
-    @Size(min=2, message = "Не меньше 5 знаков")
+    @Size(min = 2, message = "Не меньше 5 знаков")
     private String username;
     @Column(name = "password")
-    @Size(min=2, message = "Не меньше 5 знаков")
+    @Size(min = 2, message = "Не меньше 5 знаков")
     private String password;
-//    @Transient
+    //    @Transient
 //    private String passwordConfirm;
     @Column(name = "first_name")
     private String firstName;
@@ -107,6 +107,7 @@ public class User implements UserDetails {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
