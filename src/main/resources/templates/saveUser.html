@@ -2,33 +2,63 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add User</title>
+    <title>Add user</title>
 </head>
 <body>
-<h2>Add User</h2>
+<h2>Add user</h2>
 <div>
-    <form th:action="@{/users/save}" th:object="${user}" method="post">
+    <th:block th:include="menuPage">Menu</th:block>
+</div>
+<div>
+    <form th:action="@{add}"
+          th:object="${user}"
+          method="post">
         <fieldset>
-            <legend>User data</legend>
+            <legend>Users data</legend>
             <p>
-                <label th:for="name">Name</label>
-                <input type="text" name="name" th:id="name" th:value="${user.getName()}">
-            </p>
-            <p>
-                <label th:for="lastName">LastName</label>
-                <input type="text" name="lastName" th:id="lastName" th:value="${user.getLastName()}"><br/>
-
-            </p>
-            <p>
-                <label th:for="email">Age</label>
-                <input type="text" name="age" th:id="age" th:value="${user.getAge()}"><br/>
+                <label th:for="username">Username
+                    <input type="text"
+                           name="username"
+                           th:id="username">
+                </label>
+                <br/>
+                <label th:for="password">Password
+                    <input type="text"
+                           name="password"
+                           th:id="password">
+                </label>
+                <br/>
+                <label th:for="age">Age
+                    <input type="text"
+                           name="age"
+                           th:id="age">
+                </label>
+                <br/>
+                <label th:for="firsName">Name
+                    <input type="text"
+                           name="firstName"
+                           th:id="firstName">
+                </label>
+                <br/>
+                <label th:for="lastName">LastName
+                    <input type="text"
+                           name="lastName"
+                           th:id="lastName">
+                </label>
+                <br/>
+                <label>
+                    <input type="checkbox"
+                           name="roleAdmin"
+                           th:value="ROLE_ADMIN"
+                           th:text="Admin">
+                </label>
             </p>
         </fieldset>
-        <button type="submit">Save</button>
+        <button type="submit">Add user</button>
     </form>
     <br/>
-    <form th:action="@{/users}">
-        <button type="submit" class="btn btn-outline-danger">Back to Users list</button>
+    <form th:action="@{/admin/all}">
+        <button type="submit">back to users list</button>
     </form>
 </div>
 </body>
